@@ -1166,7 +1166,7 @@ static int lcdc_samsung_panel_on_esd(struct platform_device *pdev)
 	return 0;
 }
 
-void s6d16a0x_esd ( void )
+static void s6d16a0x_esd(struct work_struct *work )
 {
 	if ( panel_initialized )
 	{
@@ -1183,7 +1183,7 @@ void s6d16a0x_esd ( void )
 	}
 }
 
-static DECLARE_WORK ( lcd_esd_work, s6d16a0x_esd );
+static DECLARE_WORK (lcd_esd_work, s6d16a0x_esd);
 
 static irqreturn_t s6d16a0x_esd_irq_handler(int irq, void *handle)
 {
